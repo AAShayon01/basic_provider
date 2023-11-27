@@ -1,12 +1,20 @@
+import 'package:exercise/providers/data_model_provider.dart';
 import 'package:exercise/providers/webSeriesProvider.dart';
 import 'package:exercise/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(ChangeNotifierProvider<WebSeriesProvider>(create: (_)=>WebSeriesProvider(),
-  child: MyApp(),
-  ));
+  runApp(
+      MultiProvider(
+          providers:[
+           ChangeNotifierProvider<WebSeriesProvider>(create: (_)=>WebSeriesProvider()),
+           ChangeNotifierProvider<DataModelProvider>(create:(_)=>DataModelProvider()),
+      ],
+              child: MyApp(),
+      ),
+
+  );
 
 }
 
